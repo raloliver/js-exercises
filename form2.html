@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Formulario</title>
+<style type="text/css">
+
+body {
+	background-color: #EEEEEE;
+	margin:0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+#principal {
+	width:900px;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	border-right:1px solid #999;
+	border-left:1px solid #999;
+	border-bottom:1px solid #999;
+	margin-bottom:30px;
+}
+
+#janela {
+	width:870px;
+	padding:15px;
+}
+
+#mensagem {
+	width:500px;
+	margin-left:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#F00;
+}
+
+h1 {
+	color:#666666;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+}
+
+.labelTexto {
+	display:block;
+}
+
+.labelCheckBox {
+	margin-right:20px;
+}
+
+.caixaTexto {
+	padding:5px;
+	border:1px solid #999;
+	width:200px;
+	background-color:#FFFFFF;
+	margin-bottom:20px;
+}
+
+.botaoSubmit {
+	display:block;
+}
+
+#cidade {
+	display:block;
+	width:260px;
+	margin-bottom:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+	<div id="principal">
+    	<img src="http://placehold.it/900x366&text=Hide Section!" width="900" height="366" />
+
+        <div id="janela">
+            <h1>Inscreva-se abaixo</h1>
+
+            <form id="formViagem" name="formViagem" method="post" action="go.html">
+
+				<label for="nome" class="labelTexto">Nome</label>
+    			<input type="text" id="nome" name="nome" class="caixaTexto"  />
+
+				<label for="telefone" class="labelTexto">Telefone</label>
+    			<input type="text" id="telefone" name="telefone" class="caixaTexto" />
+
+				<label for="email" class="labelTexto">Email</label>
+    			<input type="text" id="email" name="email"  class="caixaTexto" />
+
+                <span style="display:block;margin-bottom:20px">
+                	<input type="checkbox" name="escolhercidade" id="escolhercidade" value="escolher" />
+                	<label for="escolhercidade" class="labelCheckBox">Escolher a cidade que deseja morar.</label>
+                </span>
+
+                <div id="cidade">
+
+                	<input type="checkbox" name="Feira de Santana" id="Feira de Santana" value="1" />
+                    <label for="Feira de Santana" class="labelCheckBox">Feira de Santana</label>
+
+                	<input type="checkbox" name="Santo Antonio de Jesus" id="Santo Antonio de Jesus" value="2" />
+                    <label for="Santo Antonio de Jesus" class="labelCheckBox">Santo Antonio de Jesus</label>
+
+                	<input type="checkbox" name="Curitiba" id="Curitiba" value="3" />
+                    <label for="Curitiba" class="labelCheckBox">Curitiba</label>
+
+                	<input type="checkbox" name="Blumenau" id="Blumenau" value="4" />
+                    <label for="Blumenau" class="labelCheckBox">Blumenau</label>
+
+                	<input type="checkbox" name="São José dos Campos" id="São José dos Campos" value="5" />
+                    <label for="São José dos Campos" class="labelCheckBox">São José dos Campos</label>
+
+                	<input type="checkbox" name="Amargosa" id="Amargosa" value="6" />
+                    <label for="Amargosa">Amargosa</label>
+
+                </div>
+
+                <input type="submit" value="Enviar" class="botaoSubmit" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+ 	<script src="form2.js" type="text/javascript"></script>
+</body>
+</html>
