@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" />
-<title>Javascript com CSS - Alterar um className com Javascript</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Detectar resolução do usuário Mobile ou Desktop</title>
+<link id="CSS" rel="stylesheet" href="desktop.css" />
 <style type="text/css">
+body {
 body {
 	background-color: #F6E2C6;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -17,13 +19,6 @@ body {
 	margin-bottom:40px;
 }
 
-.largura100pc {
-	width: auto;
-}
-
-.largura320px {
-	width:320px;
-}
 
 img {
 	margin:10px;
@@ -48,8 +43,6 @@ img {
 
     </div>
 
-	<a href="" id="opcaoDesktop">Desktop</a> |  <a href="" id="opcaoMobile">Mobile</a>
-
-	<script src="css.js" type="text/javascript"></script>
+	<script src="responsive.js" type="text/javascript"></script>
 </body>
 </html>
