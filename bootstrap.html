@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap + jQuery</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well-lg"  data-toggle="popover" title="Popover title" data-placement="bottom" data-content="And here's some amazing content. It's very engaging. Right?">
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Fechar">&times;</button>
+                    <strong>Title!</strong> Alert body ...
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well-lg">
+                <a id="action" class="btn btn-primary btn-lg popover-toogle">Israel Oliveira</a>
+            </div>
+        </div>
+    </div>
+    <div id="edit" class="hidden">
+        <div class="popover-heading">
+            Clique para Editar e Salvar
+        </div>
+        <div class="popover-content">
+            <div class="pull-right" style="padding-bottom: 15px;">
+                <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-check"></span></a>
+                <a class="btn btn-warning" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(function(){
+        $("#action").popover({
+            html : true,
+            trigger : 'hover',
+            content: function() {
+              return $("#edit").html();
+            },
+            delay: { 'show': 500, 'hide' : 10000 },
+            placement: 'top'
+        });
+    });
+    function editItem() {
+        var editHTML = $(this).html();
+        var editValue = $("<input class='input-lg' />");
+        editValue.val(editHTML);
+        $(this).replaceWith(editValue);
+        editValue.focus();
+        editValue.blur(editedItem);
+        $(".input-lg").keypress(function(event) {
+        if (event.which == '13') {
+            event.preventDefault();
+                editedItem.call(this);
+            }
+        });
+    };
+
+    function editedItem() {
+        var html = $(this).val();
+        var editedValue = $("<a id='action' class='btn btn-warning btn-lg popover-toogle'>");
+        editedValue.html(html);
+        $(this).replaceWith(editedValue);
+        editedValue.click(editItem);
+    };
+    $(document).ready(function() {
+        $("#action").click(editItem);
+    });
+    $('html').on('mouseup', function(e) {
+        if(!$(e.target).closest('.popover').length) {
+            $('.popover').each(function(){
+                $(this.previousSibling).popover('hide');
+            });
+        }
+    });
+</script>
+</html>
