@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPP Prototype</title>
+    <script>
+        // exemplo de classe
+        function Product (name,price,stock) {
+            this.name   = name;
+            this.price  = price;
+            this.stock  = stock;
+
+            // metodo para calcular o ROI (incluído dentro da classe)
+            /*
+            this.returnStock = function () {
+                console.log("Total " + price * stock);
+            }
+            */
+        }
+
+        // boa pratica usando o prototype (como o metodo está fora da classe, usamos o this)
+        Product.prototype.returnStock = function () {
+            console.log("Total do Produto: " + this.price * this.stock);
+        }
+
+        function start(){
+            // etanciando o objeto
+            var orange = new Product ("Laranja",0.2,1000);
+            orange.returnStock();
+        };
+    </script>
+</head>
+<body onload="start()">
+
+</body>
+</html>

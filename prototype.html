@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<script>
+    String.prototype.FirstLetter = function(){
+        return this[0];
+    };
+</script>
+<body>
+<p><strong>string</strong> herda de <strong>objeto</strong> mas <strong>objeto</strong> não herda de <strong>string</strong></p>
+<script>
+    var name = "Israel Oliveira"    ;
+    console.log(name.FirstLetter());
+</script>
+</body>
+</html>
