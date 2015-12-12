@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bônus de Salário!</title>
+</head>
+<body>
+    <!-- se o salario mensal for maior que 0 e menor que 1000 -> 5% de bônus (condition1)-->
+    <!-- se não cair na condicao anterior e o salario for menor que 2000 -> 10% de bônus (condition2) -->
+    <!-- se não cair nas anteriores, o bonus será de 15% -->
+    <!-- nada de código flecha aqui, hehehe -->
+    <!-- && significa AND e || significa OU -->
+    <!-- e se for somente válido para MEI? -->
+    <script>
+    var mei = true;
+    var me  = true;
+    if(mei || me){
+       var salario = 2500;
+        // condition1
+        if(salario > 0 && salario < 1000){
+            var bonus = salario * 0.05;
+            console.log('Parabéns, você é nível 1 e recebeu R$' + bonus +' de bônus!');
+            console.log(bonus);
+        } else if (salario < 2000) {
+        // condition2
+            var bonus = salario * 0.10;
+            console.log('Parabéns, você é nível 2 e recebeu R$' + bonus +' de bônus!');
+            console.log(bonus);
+        } else {
+       // contition3
+            var bonus = salario * 0.15;
+            console.log('Ai sim hein, você é Top e recebeu R$' + bonus +' de bônus!')
+            console.log(bonus);
+        }
+    }
+    </script>
+</body>
+</html>
