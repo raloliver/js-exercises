@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maujor Livro</title>
+</head>
+<script>
+    var msg = '';
+    for (var i = 0; i < 10; i++) {
+        msg += i + ', ';
+    };
+    console.log(msg)
+</script>
+
+<script>
+    var msg0 = '';
+    for (var i = 0; i < 10; i++) {
+        if (i == 9) {
+            msg0 += i;
+            break;
+        };
+        msg0 += i + ', ';
+    };
+    console.log(msg0);
+</script>
+<script>
+    var msg2 = '';
+    for (var i = 0; i <= 20; i++) {
+        if (i%2 == 0) {
+            if (i == 20) {
+                msg2 += i;
+                break;
+            }
+            msg2 += i + ', ';
+        };
+    };
+    console.log(msg2)
+</script>
+<script>
+    var estado = 'SC';
+    switch (estado) {
+        case 'PR':
+            console.log('Paraná')
+            break;
+        default:
+            console.log('Outro Estado')
+            break;
+    }
+</script>
+<body>
+</body>
+</html>

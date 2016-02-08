@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<script>
+    function request() {
+        var xmlhttp;
+        var reply;
+        var action;
+
+        // browser compatibility
+        if (window.XMLHttpRequest) { //verify if obj exist
+            xmlhttp = new XMLHttpRequest();
+        } else { //old browsers
+            xmlhttp=new ActiveObject('Microsoft.XMLHTTP')
+        }
+
+        //readyState (é necessário um servidor para este teste)
+        action = function () {
+            switch (this.readyState) {
+                case this.UNSENT: // code 0: requisição não inciada
+                    console.log('Wainting request')
+                    break;
+                case this.OPENED: // code 1: requisição iniciada
+                    console.log('Connection OK')
+                    break;
+                case this.HEADERS_RECEIVED: //code 2: requisição recebida
+                    console.log('Request OK')
+                    break;
+                case this.LOADING: // code 3: processando requisição
+                    console.log('Loading...')
+                    break;
+                case this.DONE: // code 4: requisição finalizada e pronta
+                    console.log('Finish!')
+                //stats (existem vários outros status)
+                //200 ok
+                //404 not found
+                console.log(this.response);
+                if (this.status==200) {
+                    reply = this.responseText; //or responseXml
+                } else {
+                    reply = this.status + ': ' + this.statusText;
+                }
+                document.getElementById('content').innerHTML = reply;
+                break;
+            }
+        }
+
+        xmlhttp.onreadystatechange = action; //event
+        xmlhttp.open('GET', //or POST (requisições HTTP com finalidades diferente)
+                 'ajax.txt', //or .xml, .json, .py
+                 true); //Assíncrono (true or false)
+        xmlhttp.send(); //Aguardando retorno do servidor
+        // em caso de assíncrono false, ñ seria necessário o método onreadystatechange
+        // document.getElementById('content').innerHTML = xmlhttp.responseText;
+    }
+</script>
+<body>
+<div id="content">
+    <h2>AJAX on action!</h2>
+</div>
+    <button onclick="request()">Traduzir</button>
+</body>
+</html>

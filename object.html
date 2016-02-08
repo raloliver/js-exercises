@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+</head>
+<script>
+    // Sintaxe Formal
+    var book = new Object();
+    book.title      = "Javascript";
+    book.author     = "Maujor";
+    book.pages      = 600;
+    book.shipped    = function (cep, send, weight) {
+        var shipped = ""
+        return shipped;
+    }
+    book.chapter1   = "Introdução";
+    book.chapter2   = "O que é JS?";
+
+    var authorName  = book.author;
+    var chapter1    = book.chapter1;
+</script>
+<script>
+    // Sintaxe Literal
+    var books = {
+        "title": "JavaScript",
+        "author": "Maujor",
+        "pages": 600,
+        "price": "R$99,00",
+
+        "chapters":
+        {
+            "chapter1": "Introdução",
+            "chapter2": "O que é o JS?",
+            "chapter3": "Como aplicar o JS?",
+            "chapter4": "Por que usar JS?",
+            "chapter5": "Exercícios"
+        }
+    };
+
+    //Loop das propriedades do Objeto
+    var pars = "";
+    for (var prop in books){
+        pars += prop + ": " + books[prop] + "\n";
+    };
+
+    //Loop correto, removendo o [object]
+    var pars2 = "";
+    for(var prop in books){
+        if (typeof books[prop] == "object") {
+            for (var prop1 in books[prop]){
+                pars2 += prop1 + ": " + books[prop][prop1] + "\n";
+            };
+        } else {
+            pars2 += prop + ": " + books[prop] + "\n";
+        };
+    };
+
+    //Construtor
+    function Cilindo (n,r,h) {
+        this.id     = n;
+        this.raio   = r;
+        this.altura = h;
+    };
+
+    cilindroUm      = new Cilindo("Um", 2, 5);
+    cilindroDois    = new Cilindo("Dois", 3, 7);
+    cilindroTres    = new Cilindo("Três", 4, 9);
+    console.log("Ordem: "+ cilindroUm.id + "\nBase: " + cilindroUm.raio + "\nAltura: " + cilindroUm.altura);
+    console.log("Ordem: "+ cilindroDois.id + "\nBase: " + cilindroDois.raio + "\nAltura: " + cilindroDois.altura);
+    console.log("Ordem: "+ cilindroTres.id + "\nBase: " + cilindroTres.raio + "\nAltura: " + cilindroTres.altura);
+</script>
+<body>
+
+</body>
+</html>

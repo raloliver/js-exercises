@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Essencial JS</title>
+</head>
+<body>
+    <div id="content"></div>
+    <h3>Call X Apply</h3>
+    <h3>Closures</h3>
+    <h3>This</h3>
+    <ul>
+        <li>Escopo Global</li>
+        <li>Método Objeto</li>
+        <li>Função Sem Contexto</li>
+        <li>Função na Prototype Chain</li>
+    </ul>
+    <h3>Bind</h3>
+    <h3>Map, Filter e Reduce</h3>
+    <h3>Prototype</h3>
+    <pre>var Dog = Object.create(Animal);</pre>
+    <h3>Hoisting</h3>
+</body>
+<script>
+/*
+    var Animal = {
+        walk: function() {
+            console.log("I'm walking...");
+        }
+    };
+
+    var Dog = Object.create(Animal);
+
+    Animal.walk(); // I'm walking...
+    Dog.walk(); // I'm walking...
+
+    // var Airplane = {
+    //     fly: function() {
+    //         console.log("I'm flying...");
+    //     }
+    // };
+
+    var Airplane = Object.create(Animal)
+    Animal.walk();
+    //Airplane.fly(); // Uncaught TypeError: Airplane.walk is not a function(…)
+*/
+</script>
+<script>
+var months =[
+    {shortName: 'JAN', fullName: 'January',  number: 1},
+    {shortName: 'FEB', fullName: 'February', number: 2},
+    {shortName: 'MAR', fullName: 'March', number: 3},
+    {shortName: 'APR', fullName: 'April', number: 4},
+    {shortName: 'MAY', fullName: 'May', number: 5},
+    {shortName: 'JUN', fullName: 'June', number: 6},
+    {shortName: 'JUL', fullName: 'July', number: 7},
+    {shortName: 'AGO', fullName: 'August', number: 8},
+    {shortName: 'SET', fullName: 'September', number: 9},
+    {shortName: 'OUT', fullName: 'October', number: 10},
+    {shortName: 'NOV', fullName: 'November', number: 11},
+    {shortName: 'DEZ', fullName: 'December', number: 12}
+];
+
+// var obj = JSON.parse(JSON.stringify(months));
+
+var shortNameMonths = months.map(function(month) {
+    return month.shortName;
+});
+/*
+var firstSemester = months.filter(function(month) {
+    return month.number >= 6;
+});
+*/
+
+// var firstSemester = months.filter(month => month.number <= 6);
+
+var firstSemester = months.filter(function (month) { return month.number <= 6});
+
+var s = JSON.stringify(firstSemester, null, 4);
+
+var monthsAcc = months.reduce(function(acc, month) {
+    return acc + '/' + month.shortName;
+}, '');
+
+var i = 0;
+var data = months.length;
+while (i < data) {
+    console.log(months[i].fullName);
+    i++;
+}
+
+// console.log(s);
+</script>
+<script>
+    var content = document.getElementById('content');
+    content.innerHTML = JSON.stringify(firstSemester);
+</script>
+</html>

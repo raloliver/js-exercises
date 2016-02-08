@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <script src="data.json"></script>
+</head>
+<script>
+/*
+    var i = 0;
+    var dataCount = data_json.length;
+
+    while (i < dataCount) {
+        console.log("A o nome do usuário é " + data_json[i].first_name + ' ' + data_json[i].last_name);
+        i++;
+    }
+*/
+/*
+for(var i in data_json){
+
+        var data = data_json[i];
+        if(data.titles instanceof Array){
+                var titles = "";
+                for(var j in data.titles){
+
+                        titles += data.titles[j].title + " & ";
+
+
+                }
+
+                titles = titles.slice(0, titles.length-3);
+                //console.log("Employee "+ data.emp_no +" has served as "+titles);
+        }
+        else{
+                var title = data.titles.title;
+                //console.log("Employee "+ data.emp_no +" has served as "+title);
+        }
+}
+*/
+var url = "https://public-api.wordpress.com/rest/v1/sites/blog.leadlovers.com.br/posts/3632"
+var data = new XMLHttpRequest();
+data.open('GET', url, true);
+data.send(null);
+data.onreadystatechange = function () {
+     if (data.readyState == 4 && (data.status == 200)) {
+        var Json = JSON.parse(data.responseText);
+        document.getElementById('nome').innerHTML = Json.author.name;
+        document.getElementById('title').innerHTML = Json.title;
+        document.getElementById('img').src = Json.author.avatar_URL;
+    } else {
+        // document.body.innerHTML = "<img src='http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif' />";
+    }
+}
+</script>
+
+<body>
+    <h2>Include a External JSON</h2>
+    <div id="content" class="class" data-user='{ "name" : "Todd", "id" : "01282183" }'></div>
+    <div>
+        <img id="img" src="" alt="">
+    <br>
+        Autor: <span id="nome"></span>
+    <br>
+        Assunto: <span id="title"></span>
+    </div>
+</body>
+<script>
+    var elem = document.querySelector('.class').getAttribute('data-user');
+    var json = JSON.parse(elem);
+    console.log(json.name);
+    console.log(json.id);
+</script>
+</html>

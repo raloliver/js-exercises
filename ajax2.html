@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Search with GET and POST</title>
+</head>
+<script>
+function getNames () {
+    var xmlHttp = new XMLHttpRequest();
+    var suggestions = document.getElementById('suggestions');
+    var name = document.getElementById('name');
+    //neste momento passamos para o lado do servidor
+    var url  = "search.php?name=" + name.value;
+
+    var action = function () {
+        if (this.readyState == this.DONE && this.status == 200) {
+            suggestions.innerHTML = this.responseText;
+        }
+    }
+
+    xmlHttp.onreadystatechange = action;
+    xmlHttp.open('GET', url, true);
+    xmlHttp.send();
+}
+
+function getNamesP () {
+    var xmlHttp = new XMLHttpRequest();
+    var suggestions = document.getElementById('suggestions');
+    var name = document.getElementById('name');
+    var url  = "search.php";
+    // não temos mais a string com a ? mas passamos os dados a partir de uma variável
+    var data = "name="+name.value;
+
+    var action = function () {
+        if (this.readyState == this.DONE && this.status == 200) {
+            alert(this.getAllResponseHeaders());
+            //alert(this.getResponseHeader('content-type'));
+            // o content-type define o tipo de conteúdo que o servidor retorna (textHtml, textXml, textJson)
+            suggestions.innerHTML = this.responseText;
+        }
+    }
+
+    xmlHttp.onreadystatechange = action;
+    xmlHttp.open('POST', url, true);
+    //aqui é declarado qual será o cabeçalho do envio
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlHttp.send(data);
+}
+</script>
+<body>
+    <input type="text" id="name">
+    <label id="suggestions"></label>
+    <br>
+    <button onclick="getNames()">Search GET</button>
+    <br>
+    <button onclick="getNamesP()">Search POST</button>
+</body>
+</html>
